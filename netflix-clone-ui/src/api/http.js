@@ -20,6 +20,11 @@ export function getBackendBaseUrl() {
     return configured.replace(/\/+$/, "");
   }
 
+  const hardFallback = "https://netflix-clone-mini-project-ii.onrender.com";
+  if (import.meta.env.PROD) {
+    return hardFallback;
+  }
+
   // In local dev, Vite proxy can handle /api requests without explicit base URL.
   if (import.meta.env.DEV) {
     return "";
