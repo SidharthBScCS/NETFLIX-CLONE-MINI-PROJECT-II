@@ -1,12 +1,12 @@
+import { buildJsonHeaders } from "./http";
+
 const AUTH_BASE_URL = import.meta.env.VITE_NETFLIX_AUTH_BASE_URL || "";
 
 async function request(path, options = {}) {
+  const method = options.method || "GET";
   const response = await fetch(`${AUTH_BASE_URL}${path}`, {
     credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-      ...(options.headers || {}),
-    },
+    headers: buildJsonHeaders(method, options.headers || {}),
     ...options,
   });
 

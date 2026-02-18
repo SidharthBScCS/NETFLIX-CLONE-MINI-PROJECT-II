@@ -1,12 +1,13 @@
+import { buildJsonHeaders } from "./http";
+
 const BACKEND_BASE_URL = import.meta.env.VITE_NETFLIX_AUTH_BASE_URL || "";
 
 async function fetchMovies(path) {
+  const method = "GET";
   const response = await fetch(`${BACKEND_BASE_URL}${path}`, {
-    method: "GET",
+    method,
     credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: buildJsonHeaders(method),
   });
 
   const payload = await response.json().catch(() => ({}));
@@ -26,12 +27,11 @@ async function fetchMovies(path) {
 }
 
 async function fetchHomeMovies() {
+  const method = "GET";
   const response = await fetch(`${BACKEND_BASE_URL}/api/movies/home`, {
-    method: "GET",
+    method,
     credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: buildJsonHeaders(method),
   });
 
   const payload = await response.json().catch(() => ({}));

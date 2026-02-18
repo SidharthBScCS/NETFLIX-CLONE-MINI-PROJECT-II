@@ -1,3 +1,5 @@
+import { buildJsonHeaders } from "./http";
+
 const BACKEND_BASE_URL = import.meta.env.VITE_NETFLIX_AUTH_BASE_URL || "";
 
 export async function subscribePremium({
@@ -8,12 +10,11 @@ export async function subscribePremium({
   expiryYear,
   cvv,
 }) {
+  const method = "POST";
   const response = await fetch(`${BACKEND_BASE_URL}/api/payments/premium/subscribe`, {
-    method: "POST",
+    method,
     credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: buildJsonHeaders(method),
     body: JSON.stringify({
       planCode,
       cardHolderName,

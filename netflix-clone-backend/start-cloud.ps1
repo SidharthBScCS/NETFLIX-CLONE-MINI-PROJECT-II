@@ -4,6 +4,7 @@ param(
     [string]$DbUser = "neondb_owner",
     [int]$AppPort = 8082,
     [string]$RateLimiterBaseUrl = "http://localhost:8080",
+    [string]$CorsAllowedOriginPatterns = "https://*.vercel.app",
     [string]$RedisHost = "",
     [int]$RedisPort = 6379,
     [string]$RedisUser = "",
@@ -38,8 +39,9 @@ $env:REDIS_USERNAME = $RedisUser
 $env:REDIS_PASSWORD = $redisPassword
 $env:REDIS_SSL_ENABLED = "true"
 $env:RATELIMITER_BASE_URL = $RateLimiterBaseUrl
-$env:SESSION_COOKIE_SAMESITE = "Lax"
-$env:SESSION_COOKIE_SECURE = "false"
+$env:CORS_ALLOWED_ORIGIN_PATTERNS = $CorsAllowedOriginPatterns
+$env:SESSION_COOKIE_SAMESITE = "None"
+$env:SESSION_COOKIE_SECURE = "true"
 $env:SESSION_COOKIE_DOMAIN = $SessionCookieDomain
 
 Write-Host "Starting Netflix backend with cloud DB + Redis configuration..." -ForegroundColor Cyan
