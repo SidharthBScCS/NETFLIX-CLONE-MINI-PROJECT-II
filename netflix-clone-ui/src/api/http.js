@@ -20,17 +20,13 @@ export function getBackendBaseUrl() {
     return configured.replace(/\/+$/, "");
   }
 
-  const hardFallback = "https://netflix-clone-mini-project-ii.onrender.com";
-  if (import.meta.env.PROD) {
-    return hardFallback;
-  }
-
-  // In local dev, Vite proxy can handle /api requests without explicit base URL.
+  // In local dev and production, fallback to same-origin /api.
+  // In production this is expected to be handled by Vercel API proxy.
   if (import.meta.env.DEV) {
     return "";
   }
 
-  throw new Error("Backend URL is not configured. Set VITE_NETFLIX_AUTH_BASE_URL in Vercel.");
+  return "";
 }
 
 export function buildJsonHeaders(method = "GET", headers = {}) {
