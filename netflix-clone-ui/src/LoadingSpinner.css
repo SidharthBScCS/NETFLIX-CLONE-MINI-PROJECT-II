@@ -1,0 +1,61 @@
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 260px;
+  padding: 40px;
+}
+
+.netflix-spinner {
+  width: 90px;
+  height: 90px;
+  position: relative;
+}
+
+.netflix-spinner div {
+  position: absolute;
+  width: 18px;
+  background: var(--brand-red);
+  animation: netflix-spinner 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.netflix-spinner div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+
+.netflix-spinner div:nth-child(2) {
+  left: 36px;
+  animation-delay: -0.12s;
+}
+
+.netflix-spinner div:nth-child(3) {
+  left: 64px;
+  animation-delay: 0s;
+}
+
+.spinner-label {
+  margin-top: 20px;
+  text-align: center;
+  color: #b3b3b3;
+}
+
+.spinner-subtitle {
+  margin-top: 8px;
+  font-size: 0.84rem;
+  color: #808080;
+}
+
+@keyframes netflix-spinner {
+  0% {
+    top: 8px;
+    height: 70px;
+  }
+
+  50%,
+  100% {
+    top: 26px;
+    height: 34px;
+  }
+}
