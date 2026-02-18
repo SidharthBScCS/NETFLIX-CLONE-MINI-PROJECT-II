@@ -1,0 +1,10 @@
+{
+  "buildCommand": "cd netflix-clone-ui && npm install && npm run build",
+  "outputDirectory": "netflix-clone-ui/dist",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
