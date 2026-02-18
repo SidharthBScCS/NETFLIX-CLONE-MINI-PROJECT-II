@@ -10,6 +10,7 @@ SPRING_PROFILES_ACTIVE=local
 ```bash
 ./mvnw spring-boot:run
 ```
+4. If no external DB is configured, the app falls back to in-memory H2 by default.
 
 ## Production Run
 Set at minimum:
@@ -18,7 +19,7 @@ Set at minimum:
 - `CORS_ALLOWED_ORIGIN_PATTERNS` (your frontend domain)
 - `SESSION_COOKIE_SECURE=true`
 - `SESSION_COOKIE_SAMESITE=None`
-- `RATE_LIMIT_FAIL_OPEN=false`
+- `RATE_LIMIT_FAIL_OPEN=true` (recommended until Redis is confirmed healthy)
 
 Then start with:
 ```bash
