@@ -1,6 +1,6 @@
-import { buildJsonHeaders } from "./http";
+import { buildJsonHeaders, getBackendBaseUrl } from "./http";
 
-const BACKEND_BASE_URL = import.meta.env.VITE_NETFLIX_AUTH_BASE_URL || "";
+const BACKEND_BASE_URL = getBackendBaseUrl();
 
 async function fetchMovies(path) {
   const method = "GET";

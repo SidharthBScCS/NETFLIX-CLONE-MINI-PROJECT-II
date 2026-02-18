@@ -14,6 +14,20 @@ function readCookie(name) {
   return "";
 }
 
+export function getBackendBaseUrl() {
+  const configured = (import.meta.env.VITE_NETFLIX_AUTH_BASE_URL || "").trim();
+  if (configured) {
+    return configured.replace(/\/+$/, "");
+  }
+
+  // In local dev, Vite proxy can handle /api requests without explicit base URL.
+  if (import.meta.env.DEV) {
+    return "";
+  }
+
+  throw new Error("Backend URL is not configured. Set VITE_NETFLIX_AUTH_BASE_URL in Vercel.");
+}
+
 export function buildJsonHeaders(method = "GET", headers = {}) {
   const normalizedMethod = method.toUpperCase();
   const baseHeaders = {

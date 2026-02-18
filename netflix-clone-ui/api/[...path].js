@@ -1,3 +1,5 @@
+/* global process, Buffer */
+
 const HOP_BY_HOP_HEADERS = new Set([
   "connection",
   "keep-alive",
